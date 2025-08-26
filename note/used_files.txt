@@ -1,0 +1,72 @@
+============= chat Agent =============
+chatAgent_v02.py
+
+============= parameter Agent =============
+enhanced_parameter_agent_phase2_v02.py หรือ enhanced_parameter_agent_phase2.py
+enhanced_parameter_models.py
+
+============= config =============
+config/domain_rules.py
+
+============= classification Agent =============
+llm_primary_classification_agent_gpt35.py (test5: fail: คำถามคลุมเคลือ)
+llm_primary_classification_agent_gpt4.py
+domain_rules.py
+
+จะใช้ llm_primary_classification_agent_gpt35_v03.py (ไม่ได้ใช้ domain_rules.py)
+
+============= classification parameter Agent (pure GPT) =============
+https://claude.ai/chat/1a96e30b-aeb2-446b-aac4-26e3b135d61a
+unified_FITS_classification_parameter_agent_v02.py (ไม่มีอิโมจิ ใช้เงินมากกว่า)
+unified_FITS_classification_parameter_agent_v03.py (ยังมีอิโมจิ ใช้เงินน้อยกว่า)
+unified_FITS_classification_parameter_agent_v02_1.py (ปรับสำหรับ Orchestrator)
+*unified_FITS_classification_parameter_agent_v02_3.py 
+    (ปรับปรุง unified_FITS_classification_parameter_agent_v02_2.py เพื่อรองรับ Multiple Analysis Types และ parameters ที่เหมือนกัน)
+
+============= Orchestrator =============
+Orchestrator.py (version นี้ใช้ mock ยังไม่ได้เรียกของจริง)
+https://claude.ai/chat/4fc211dc-8fc5-4eca-898a-9d21c75c6be8 (prompt สำหรับทำงานต่อ)
+
+
+============= real astrosage cliend =============
+orchestrator.py (Mock (fake responses))
+orchestrator_v02.py (Real )
+orchestrator_v03.py (พัฒนาจาก v02)
+*orchestrator_v04.py (พัฒนาจาก v03: เพิ่ม file manager integration และ metadata analysis workflow)
+*real_astrosage_client.py (https://claude.ai/chat/546a1969-735b-49f4-9551-a3a60a79e072)
+real_astrosage_client_v02.py (เหมือน real_astrosage_client.py แค่ลบ อิโมจิ)
+
+    - test_connection.py (test real_astrosage_client.py เบื่องต้น)
+    - test_qa.py (ถ้า Connection สำเร็จ → ทดสอบ Q&A)
+    - test_qa_integrate.py (ถ้า Q&A สำเร็จ → ทดสอบ Integration)
+
+    - test_astrosage_connection.py
+    - test_astrosage_qa.py
+    - test_orchestrator_integration.py
+    - test_advanced_scenarios.py
+    - test_error_scenarios.py
+    - run_all_tests.py
+
+    - test_advanced_scenarios_real.py
+
+    # 1. ทดสอบ connection พื้นฐาน
+    python test_astrosage_connection.py
+
+    # 2. ทดสอบ Q&A
+    python test_astrosage_qa.py
+
+    # 3. ทดสอบ integration
+    python test_orchestrator_integration.py
+
+    # 4. ทดสอบทั้งหมดพร้อมกัน
+    python run_all_tests.py
+
+
+============= file_manager.py =============
+https://claude.ai/chat/6f65eded-165a-463e-92bf-c3693002d52d
+file_manager.py
+*file_manager_v02.py (เพิ่ม get_astrosage_metadata)
+
+============= fits_analysis_service & tools =============
+fits_analysis_tools.py
+fits_analysis_service.py
